@@ -69,3 +69,9 @@ c:\users\kevin moss\documents\visual studio 2015\Projects\FinalYearProject\Final
 c:\users\kevin moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\obj\Debug\FinalYearProject.pdb
 c:\users\kevin moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\obj\Debug\FinalYearProject.Migrations.Initial.resources
 c:\users\kevin moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\obj\Debug\FinalYearProject.csproj.GenerateResource.Cache
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\SendGrid.dll
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\SendGrid.SmtpApi.dll
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\SendGridMail.dll
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\System.Net.Http.Formatting.dll
+C:\Users\Kevin Moss\documents\visual studio 2015\Projects\FinalYearProject\FinalYearProject\bin\System.Net.Http.Formatting.xml

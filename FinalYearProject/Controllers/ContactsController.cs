@@ -14,7 +14,7 @@ namespace FinalYearProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
+        
         // GET: Contacts
         public ActionResult Index()
         {
@@ -42,12 +42,12 @@ namespace FinalYearProject.Controllers
         {
             return View(new Contact
             {
-                Address = "123 N 456 W",
-                City = "Great Falls",
-                Email = "ab@cd.com",
-                Name = "Joe Smith",
-                State = "MT",
-                Zip = "59405"
+                Address = "46 St James Court",
+                City = "Dublin",
+                Email = "kevinmoshey1@hotmail.com",
+                Name = "Kevin Moss",
+                State = "Dublin",
+                Zip = "0000"
             });
         }
 
