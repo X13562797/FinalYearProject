@@ -16,6 +16,7 @@ using System.Net.Mail;
 using System.Configuration;
 using System.Diagnostics;
 using FinalYearProject.Models;
+using Twilio;
 
 namespace FinalYearProject
 {
@@ -32,7 +33,7 @@ namespace FinalYearProject
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
             myMessage.From = new System.Net.Mail.MailAddress(
-                                "Joe@contoso.com", "Joe S.");
+                                "x13562797@student.ncirl.ie", "Administrator.");
             myMessage.Subject = message.Subject;
             myMessage.Text = message.Body;
             myMessage.Html = message.Body;
@@ -62,8 +63,20 @@ namespace FinalYearProject
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
+
+        // Twilio Begin
+         var Twilio = new TwilioRestClient(
+         System.Configuration.ConfigurationManager.AppSettings["SMSAccountIdentification"],
+         System.Configuration.ConfigurationManager.AppSettings["SMSAccountPassword"]);
+         var result = Twilio.SendMessage(
+         System.Configuration.ConfigurationManager.AppSettings["SMSAccountFrom"],
+         message.Destination, message.Body
+         );
+        // Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
+         Trace.TraceInformation(result.Status);
+        // Twilio doesn't currently have an async API, so return success.
+        return Task.FromResult(0);
+        // Twilio End
         }
     }
 
@@ -81,14 +94,14 @@ namespace FinalYearProject
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
-                AllowOnlyAlphanumericUserNames = false,
+                AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
 
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 8,
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
@@ -116,8 +129,12 @@ namespace FinalYearProject
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider =
+                new DataProtectorTokenProvider<ApplicationUser>
+                   (dataProtectionProvider.Create("ASP.NET Identity"))
+                {
+                    TokenLifespan = TimeSpan.FromHours(1)
+                };
             }
             return manager;
         }

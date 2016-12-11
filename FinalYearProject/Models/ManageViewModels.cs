@@ -7,7 +7,9 @@ namespace FinalYearProject.Models
 {
     public class IndexViewModel
     {
+        [StringLength(20, MinimumLength = 8)]
         public bool HasPassword { get; set; }
+
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
